@@ -9,8 +9,10 @@
     <link rel="icon" type="image/png" href="images/favicon.png" />
     <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Source+Sans+Pro&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="estilos.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
+<i class="icon-menu burger-button" id="burger-menu"></i>
 <header class="header">
     <div class="container">
         <figure class="logo">
@@ -54,6 +56,8 @@
             </article>
         </div>
     </section>
+<!--    <video class="html-video" src="https://www.youtube.com/watch?v=LoKvxCSZw5w" width="1280" height="720" controls>-->
+<!--    </video>-->
     <div class="container">
         <h2 id="eventos" class="event-list-title">Más sobre mi experiencia</h2>
     </div>
@@ -61,7 +65,9 @@
         <div class="container">
             <article class="event">
                 <figure class="event-imageContainer">
-                    <img class="event-image" src="images/platzi-conf.jpg" width="500" />
+                    <div class="flexible-video">
+                        <iframe class="youtube-video" width="560" height="315" src="https://www.youtube.com/embed/mlHklH5VBtI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
                 </figure>
                 <div class="event-detail">
                     <h3 class="event-title">Platzi conf México 2018</h3>
@@ -119,8 +125,32 @@
     <footer class="footer">
         <div class="container">
             <div><p>Curso de desarrollo web online 2018 <img width="80" src="images/platzi.png" alt="platzi"></p></div>
-            <div><p>Design with <\3 by <a href="https://twitter.com/ThespianArtist">@ThespianArtist</a></p></div>
+            <div><p>Design with ❤ by <a href="https://twitter.com/ThespianArtist">@ThespianArtist</a></p></div>
         </div>
     </footer>
+    <script>
+        const menu = document.querySelector('.menu');
+        const burgerButton = document.querySelector('#burger-menu');
+        const classOfActive = 'is-active';
+        const ipad = window.matchMedia('screen and (max-width: 767px)')
+        ipad.addEventListener('change',validation)
+        function validation() {
+            if(ipad.matches){
+                burgerButton.addEventListener('click', hideShow);
+            }
+            else{
+                burgerButton.removeEventListener('click', hideShow);
+            }
+        }
+        validation();
+        function hideShow() {
+            if(menu.classList.contains(classOfActive)){
+                menu.classList.remove(classOfActive);
+            }
+            else{
+                menu.classList.add(classOfActive);
+            }
+        }
+    </script>
 </body>
 </html>
